@@ -1,4 +1,3 @@
-
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
@@ -10,7 +9,7 @@ import reducer from './reducer';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['setting'],
+  whitelist: ['setting']
 };
 const persistedReducer = persistReducer(persistConfig, reducer);
 

@@ -5,7 +5,7 @@ import App from './app';
 
 const switchNavigator = createSwitchNavigator({
   Main,
-  App,
+  App
 });
 
 export default createAppContainer(switchNavigator);

@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TouchableOpacity
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { withNavigationFocus } from 'react-navigation';
 
 import I18n from '../Public/I18n';
 
 class Home extends Component {
-
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -16,10 +23,15 @@ class Home extends Component {
           </View>
         )}
         <View style={styles.wrapImage}>
-          <Image source={require('../Public/assets/images/logo.png')} style={styles.image} />
+          <Image
+            source={require('../Public/assets/images/logo.png')}
+            style={styles.image}
+          />
         </View>
         <View style={styles.wrapButtonIcon}>
-          <TouchableOpacity style={styles.buttonIcon} onPress={() => this.props.navigation.navigate('Setting')}>
+          <TouchableOpacity
+            style={styles.buttonIcon}
+            onPress={() => this.props.navigation.navigate('Setting')}>
             <Icon name="settings" size={30} />
             <Text>{I18n.t('setting')}</Text>
           </TouchableOpacity>
@@ -31,16 +43,16 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FFFFFF'
   },
   wrapImage: {
     width: '100%',
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: 30
   },
   image: {
     width: 200,
-    height: 200,
+    height: 200
   },
   engine: {
     position: 'absolute',
@@ -48,16 +60,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     paddingHorizontal: 10,
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   wrapButtonIcon: {
     width: '100%',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   buttonIcon: {
     padding: 10,
-    alignItems: 'center',
-  },
+    alignItems: 'center'
+  }
 });
 
-export default Home;
+export default withNavigationFocus(Home);

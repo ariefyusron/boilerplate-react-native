@@ -6,10 +6,10 @@ const id = require('./language/id.json');
 I18n.fallbacks = true;
 I18n.translations = {
   en,
-  id,
+  id
 };
 
-export const switchLanguage = (language) => {
+export const switchLanguage = language => {
   I18n.locale = language;
 };
 

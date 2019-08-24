@@ -20,7 +20,6 @@ const App = () => {
         <NavigationApp />
       </PersistGate>
     </Provider>
-
   );
 };
 
