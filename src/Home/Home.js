@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   View,
   Text,
@@ -15,28 +15,35 @@ import I18n from '../Public/I18n';
 class Home extends Component {
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {global.HermesInternal == null ? null : (
-          <View style={styles.engine}>
-            <Text>{I18n.t('language')}</Text>
-            <Text>{I18n.t('engine')}: Hermes</Text>
+      <Fragment>
+        <View style={styles.engine}>
+          <Text>{I18n.t('language')}</Text>
+          <Text>
+            {`Hermes: ${
+              global.HermesInternal == null ? I18n.t('off') : I18n.t('on')
+            }`}
+          </Text>
+        </View>
+        <View style={styles.wrapAuthor}>
+          <Text>Arief Yusron</Text>
+        </View>
+        <ScrollView style={styles.container}>
+          <View style={styles.wrapImage}>
+            <Image
+              source={require('../Public/assets/images/logo.png')}
+              style={styles.image}
+            />
           </View>
-        )}
-        <View style={styles.wrapImage}>
-          <Image
-            source={require('../Public/assets/images/logo.png')}
-            style={styles.image}
-          />
-        </View>
-        <View style={styles.wrapButtonIcon}>
-          <TouchableOpacity
-            style={styles.buttonIcon}
-            onPress={() => this.props.navigation.navigate('Setting')}>
-            <Icon name="settings" size={30} />
-            <Text>{I18n.t('setting')}</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
+          <View style={styles.wrapButtonIcon}>
+            <TouchableOpacity
+              style={styles.buttonIcon}
+              onPress={() => this.props.navigation.navigate('Setting')}>
+              <Icon name="settings" size={30} />
+              <Text>{I18n.t('setting')}</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </Fragment>
     );
   }
 }
@@ -56,11 +63,18 @@ const styles = StyleSheet.create({
   },
   engine: {
     position: 'absolute',
+    zIndex: 1,
     top: 5,
     flexDirection: 'row',
     width: '100%',
     paddingHorizontal: 10,
     justifyContent: 'space-between'
+  },
+  wrapAuthor: {
+    position: 'absolute',
+    bottom: 5,
+    right: 10,
+    zIndex: 1
   },
   wrapButtonIcon: {
     width: '100%',

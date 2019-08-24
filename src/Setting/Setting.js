@@ -23,6 +23,7 @@ class Setting extends Component {
           <TouchableHighlight
             style={[styles.button, styles.border]}
             underlayColor="rgba(100,100,100,0.1)"
+            disabled={this.props.setting.language === 'en'}
             onPress={() => this.handleClick('en')}>
             <Fragment>
               <Text style={styles.text}>English</Text>
@@ -36,6 +37,7 @@ class Setting extends Component {
           <TouchableHighlight
             style={styles.button}
             underlayColor="rgba(100,100,100,0.1)"
+            disabled={this.props.setting.language === 'id'}
             onPress={() => this.handleClick('id')}>
             <Fragment>
               <Text style={styles.text}>Bahasa Indonesia</Text>

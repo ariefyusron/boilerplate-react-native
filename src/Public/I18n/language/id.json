@@ -1,5 +1,6 @@
 {
   "setting": "Pengaturan",
-  "engine": "Mesin",
+  "on": "nyala",
+  "off": "mati",
   "language": "Bahasa Indonesia"
 }

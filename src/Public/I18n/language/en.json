@@ -1,5 +1,6 @@
 {
   "setting": "Setting",
-  "engine": "Engine",
+  "on": "on",
+  "off": "off",
   "language": "English"
 }
