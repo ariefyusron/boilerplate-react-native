@@ -12,11 +12,19 @@
     "build:ios": "react-native bundle --minify --entry-file index.js --platform ios --dev false --bundle-output ./ios/main.jsbundle --assets-dest ./ios"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.6.1",
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-native-gesture-handler": "^1.4.1",
+    "react-native-i18n": "^2.0.15",
+    "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.12.0",
-    "react-navigation-transitions": "^1.0.12"
+    "react-navigation-transitions": "^1.0.12",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
