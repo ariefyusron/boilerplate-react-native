@@ -1,11 +1,15 @@
 {
-  "name": "Boilerplate",
+  "name": "boilerplate",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean": "cd android && ./gradlew clean",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "build:ios": "react-native bundle --minify --entry-file index.js --platform ios --dev false --bundle-output ./ios/main.jsbundle --assets-dest ./ios"
   },
   "dependencies": {
     "react": "16.8.6",
@@ -16,6 +20,7 @@
     "@babel/runtime": "^7.5.5",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^6.2.2",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
