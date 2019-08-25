@@ -2,5 +2,11 @@
   "setting": "Setting",
   "on": "on",
   "off": "off",
-  "language": "English"
+  "language": "English",
+  "empty": "Empty",
+  "delete": "Delete",
+  "youSure": "Are you sure?",
+  "yes": "Yes",
+  "no": "No",
+  "typeHere": "Type here"
 }
