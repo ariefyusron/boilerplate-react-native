@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,8 @@ import {
   Alert,
   TextInput,
   ScrollView,
-  Keyboard
+  Keyboard,
+  SafeAreaView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { withNavigationFocus } from 'react-navigation';
@@ -18,6 +19,7 @@ import { connect } from 'react-redux';
 import I18n from '../Public/I18n';
 import { heightWithPercent } from '../Public/utils';
 import { addData, deleteData } from './action';
+import { KeyboardAvoidingView } from '../Public/components';
 
 class Home extends Component {
   constructor() {
@@ -61,77 +63,84 @@ class Home extends Component {
 
   render() {
     return (
-      <Fragment>
-        <View style={styles.engine}>
-          <Text>{I18n.t('language')}</Text>
-          <View style={styles.wrapAuthor}>
-            <Text>
-              {`Hermes: ${
-                global.HermesInternal == null ? I18n.t('off') : I18n.t('on')
-              }`}
-            </Text>
-            <Text>Arief Yusron</Text>
-          </View>
-        </View>
-        <ScrollView
-          style={styles.container}
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled">
-          <View style={styles.wrapImage}>
-            <Image
-              source={require('../Public/assets/images/logo.png')}
-              style={styles.image}
-            />
-          </View>
-          <View style={styles.wrapButtonIcon}>
-            <TouchableOpacity
-              style={styles.buttonIcon}
-              onPress={() => this.props.navigation.navigate('Setting')}>
-              <Icon name="settings" size={30} />
-              <Text>{I18n.t('setting')}</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.wrapContent}>
-            <View style={styles.content} elevation={5}>
-              <View style={styles.header}>
-                <TextInput
-                  placeholder={I18n.t('typeHere')}
-                  style={styles.input}
-                  onChangeText={text => this.setState({ input: text })}
-                  value={this.state.input}
-                />
-                <TouchableOpacity
-                  onPress={() => this.addData()}
-                  disabled={this.state.input === ''}>
-                  <Icon
-                    name="add-circle-outline"
-                    size={20}
-                    color={
-                      this.state.input === ''
-                        ? 'rgba(0, 184, 148, 0.3)'
-                        : '#00b894'
-                    }
-                  />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.body}>
-                <FlatList
-                  data={this.props.home.data}
-                  keyExtractor={(item, index) => index.toString()}
-                  renderItem={this._renderItem}
-                  ListEmptyComponent={this._renderEmptyItem}
-                />
-              </View>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+          <View style={styles.engine}>
+            <Text>{I18n.t('language')}</Text>
+            <View style={styles.wrapAuthor}>
+              <Text>
+                {`Hermes: ${
+                  global.HermesInternal == null ? I18n.t('off') : I18n.t('on')
+                }`}
+              </Text>
+              <Text>Arief Yusron</Text>
             </View>
           </View>
-        </ScrollView>
-      </Fragment>
+          <KeyboardAvoidingView>
+            <ScrollView
+              style={styles.scrollView}
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled">
+              <View style={styles.wrapImage}>
+                <Image
+                  source={require('../Public/assets/images/logo.png')}
+                  style={styles.image}
+                />
+              </View>
+              <View style={styles.wrapButtonIcon}>
+                <TouchableOpacity
+                  style={styles.buttonIcon}
+                  onPress={() => this.props.navigation.navigate('Setting')}>
+                  <Icon name="settings" size={30} />
+                  <Text>{I18n.t('setting')}</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.wrapContent}>
+                <View style={styles.content} elevation={5}>
+                  <View style={styles.header}>
+                    <TextInput
+                      placeholder={I18n.t('typeHere')}
+                      style={styles.input}
+                      onChangeText={text => this.setState({ input: text })}
+                      value={this.state.input}
+                    />
+                    <TouchableOpacity
+                      onPress={() => this.addData()}
+                      disabled={this.state.input === ''}>
+                      <Icon
+                        name="add-circle-outline"
+                        size={20}
+                        color={
+                          this.state.input === ''
+                            ? 'rgba(0, 184, 148, 0.3)'
+                            : '#00b894'
+                        }
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.body}>
+                    <FlatList
+                      data={this.props.home.data}
+                      keyExtractor={(item, index) => index.toString()}
+                      renderItem={this._renderItem}
+                      ListEmptyComponent={this._renderEmptyItem}
+                    />
+                  </View>
+                </View>
+              </View>
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </View>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  scrollView: {
     backgroundColor: '#FFFFFF'
   },
   wrapImage: {
@@ -175,7 +184,9 @@ const styles = StyleSheet.create({
     width: '80%',
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
-    height: '100%'
+    height: '100%',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2
   },
   header: {
     padding: 10,

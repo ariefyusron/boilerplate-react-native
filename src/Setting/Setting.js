@@ -64,7 +64,9 @@ const styles = StyleSheet.create({
     width: '80%',
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
-    marginTop: 50
+    marginTop: 50,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2
   },
   button: {
     paddingVertical: 20,
