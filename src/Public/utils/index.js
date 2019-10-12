@@ -1,3 +1,4 @@
 import heightWithPercent from './heightWithPercent';
+import widthWithPercent from './widthWithPercent';
 
-export { heightWithPercent };
+export { heightWithPercent, widthWithPercent };
