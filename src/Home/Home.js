@@ -121,6 +121,7 @@ class Home extends Component {
                   <View style={styles.body}>
                     <FlatList
                       data={this.props.home.data}
+                      extraData={I18n.t('empty')}
                       keyExtractor={(item, index) => index.toString()}
                       renderItem={this._renderItem}
                       ListEmptyComponent={this._renderEmptyItem}
