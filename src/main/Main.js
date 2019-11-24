@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { chooseLanguage } from '../../Setting/action';
+import { chooseLanguage } from '../redux/actions';
 import { isEnglish } from '../I18n';
 
 class Main extends Component {

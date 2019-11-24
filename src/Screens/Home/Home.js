@@ -16,10 +16,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { withNavigationFocus } from 'react-navigation';
 import { connect } from 'react-redux';
 
-import I18n from '../Public/I18n';
-import { heightWithPercent } from '../Public/utils';
-import { addData, deleteData } from './action';
-import { KeyboardAvoidingView } from '../Public/components';
+import I18n from '../../I18n';
+import { heightPercent } from '../../utils';
+import { addData, deleteData } from '../../redux/actions';
+import { KeyboardAvoidingView } from '../../components';
+import { LOGO } from '../../configs';
 
 class Home extends Component {
   constructor() {
@@ -82,10 +83,7 @@ class Home extends Component {
               showsVerticalScrollIndicator={false}
               keyboardShouldPersistTaps="handled">
               <View style={styles.wrapImage}>
-                <Image
-                  source={require('../Public/assets/images/logo.png')}
-                  style={styles.image}
-                />
+                <Image source={LOGO} style={styles.image} />
               </View>
               <View style={styles.wrapButtonIcon}>
                 <TouchableOpacity
@@ -179,7 +177,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     flex: 1,
     marginBottom: 30,
-    height: heightWithPercent(40)
+    height: heightPercent(40)
   },
   content: {
     width: '80%',

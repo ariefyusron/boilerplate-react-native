@@ -10,8 +10,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { persistor, store } from './src/Public/redux/store';
-import NavigationApp from './src/Public/navigation';
+import { persistor, store } from './src/redux/store';
+import NavigationApp from './src/navigation';
 
 const App = () => {
   return (

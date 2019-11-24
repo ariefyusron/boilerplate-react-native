@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import reducer from './reducer';
+import reducer from './reducers';
 
 const persistConfig = {
   key: 'root',

@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 
-import I18n from '../Public/I18n';
-import { chooseLanguage } from './action';
+import I18n from '../../I18n';
+import { chooseLanguage } from '../../redux/actions';
 
 class Setting extends Component {
   static navigationOptions = ({ navigation }) => ({
