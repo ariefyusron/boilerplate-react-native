@@ -3,8 +3,8 @@ import {
   StackViewTransitionConfigs
 } from 'react-navigation-stack';
 
-import Home from '../Screens/Home';
-import Setting from '../Screens/Setting';
+import Home from '../screens/Home';
+import Setting from '../screens/Setting';
 
 export default createStackNavigator(
   {
