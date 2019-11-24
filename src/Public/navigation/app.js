@@ -1,5 +1,7 @@
-import { createStackNavigator } from 'react-navigation';
-import StackViewStyleInterpolator from 'react-navigation-stack/src/views/StackView/StackViewStyleInterpolator';
+import {
+  createStackNavigator,
+  StackViewTransitionConfigs
+} from 'react-navigation-stack';
 
 import Home from '../../Home';
 import Setting from '../../Setting';
@@ -16,7 +18,9 @@ export default createStackNavigator(
   },
   {
     transitionConfig: () => ({
-      screenInterpolator: StackViewStyleInterpolator.forHorizontal
+      transitionSpec: 200,
+      screenInterpolator:
+        StackViewTransitionConfigs.SlideFromRightIOS.screenInterpolator
     })
   }
 );
