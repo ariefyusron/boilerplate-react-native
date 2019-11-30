@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { chooseLanguage } from '../redux/actions';
@@ -23,6 +24,12 @@ class Main extends Component {
     return null;
   }
 }
+
+Main.propTypes = {
+  setting: PropTypes.object.isRequired,
+  chooseLanguage: PropTypes.func.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
   setting: state.setting

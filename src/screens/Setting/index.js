@@ -1,3 +1,3 @@
-import Setting from './Setting';
+import Component from './Component';
 
-export default Setting;
+export default Component;
