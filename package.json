@@ -8,15 +8,15 @@
     "lint": "eslint .",
     "clean": "cd android && ./gradlew clean",
     "android": "react-native run-android",
+    "android:release": "react-native run-android --variant=release",
     "ios": "react-native run-ios",
-    "build:ios": "react-native bundle --minify --entry-file index.js --platform ios --dev false --bundle-output ./ios/main.jsbundle --assets-dest ./ios",
-    "keystore:debug": "cd android/app && keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000"
+    "build:ios": "react-native bundle --minify --entry-file index.js --platform ios --dev false --bundle-output ./ios/main.jsbundle --assets-dest ./ios"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",
     "prop-types": "^15.7.2",
-    "react": "16.8.6",
-    "react-native": "0.60.5",
+    "react": "16.9.0",
+    "react-native": "0.61.0",
     "react-native-gesture-handler": "^1.5.1",
     "react-native-i18n": "^2.0.15",
     "react-native-reanimated": "^1.4.0",
@@ -31,16 +31,16 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/runtime": "^7.5.5",
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "eslint": "^6.2.2",
+    "eslint": "^6.4.0",
     "husky": "^3.0.4",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
-    "react-test-renderer": "16.8.6"
+    "react-test-renderer": "16.9.0"
   },
   "jest": {
     "preset": "react-native"

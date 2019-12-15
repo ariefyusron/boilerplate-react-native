@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     case DELETE_DATA:
       return {
         ...state,
-        data: state.data.filter(data => data !== action.payload)
+        data: state.data.filter((data, index) => index !== action.payload)
       };
     default:
       return state;

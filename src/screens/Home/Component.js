@@ -7,7 +7,6 @@ import {
   FlatList,
   Alert,
   TextInput,
-  ScrollView,
   Keyboard,
   SafeAreaView
 } from 'react-native';
@@ -18,7 +17,6 @@ import { connect } from 'react-redux';
 
 import I18n from '../../I18n';
 import { addData, deleteData } from '../../redux/actions';
-import { KeyboardAvoidingView } from '../../components';
 import { LOGO } from '../../configs';
 import styles from './styles';
 
@@ -37,8 +35,8 @@ class Home extends Component {
     ]);
   }
 
-  deleteData(item) {
-    this.props.deleteData(item);
+  deleteData(index) {
+    this.props.deleteData(index);
   }
 
   async addData() {
@@ -47,10 +45,10 @@ class Home extends Component {
     Keyboard.dismiss();
   }
 
-  _renderItem = ({ item }) => (
+  _renderItem = ({ item, index }) => (
     <View style={styles.row}>
       <Text>{item}</Text>
-      <TouchableOpacity onPress={() => this.onClickTrash(item)}>
+      <TouchableOpacity onPress={() => this.onClickTrash(index)}>
         <Icon name="delete" size={20} color="#d63031" />
       </TouchableOpacity>
     </View>
@@ -77,58 +75,54 @@ class Home extends Component {
               <Text>Arief Yusron</Text>
             </View>
           </View>
-          <KeyboardAvoidingView>
-            <ScrollView
-              style={styles.scrollView}
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="handled">
-              <View style={styles.wrapImage}>
-                <Image source={LOGO} style={styles.image} />
-              </View>
-              <View style={styles.wrapButtonIcon}>
-                <TouchableOpacity
-                  style={styles.buttonIcon}
-                  onPress={() => this.props.navigation.navigate('Setting')}>
-                  <Icon name="settings" size={30} />
-                  <Text>{I18n.t('setting')}</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.wrapContent}>
-                <View style={styles.content} elevation={5}>
-                  <View style={styles.header}>
-                    <TextInput
-                      placeholder={I18n.t('typeHere')}
-                      style={styles.input}
-                      onChangeText={text => this.setState({ input: text })}
-                      value={this.state.input}
+          <View style={styles.container}>
+            <View style={styles.wrapImage}>
+              <Image source={LOGO} style={styles.image} />
+            </View>
+            <View style={styles.wrapButtonIcon}>
+              <TouchableOpacity
+                style={styles.buttonIcon}
+                onPress={() => this.props.navigation.navigate('Setting')}>
+                <Icon name="settings" size={30} />
+                <Text>{I18n.t('setting')}</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.wrapContent}>
+              <View style={styles.content} elevation={5}>
+                <View style={styles.header}>
+                  <TextInput
+                    placeholder={I18n.t('typeHere')}
+                    style={styles.input}
+                    onChangeText={text => this.setState({ input: text })}
+                    value={this.state.input}
+                  />
+                  <TouchableOpacity
+                    onPress={() => this.addData()}
+                    disabled={this.state.input === ''}>
+                    <Icon
+                      name="add-circle-outline"
+                      size={20}
+                      color={
+                        this.state.input === ''
+                          ? 'rgba(0, 184, 148, 0.3)'
+                          : '#00b894'
+                      }
                     />
-                    <TouchableOpacity
-                      onPress={() => this.addData()}
-                      disabled={this.state.input === ''}>
-                      <Icon
-                        name="add-circle-outline"
-                        size={20}
-                        color={
-                          this.state.input === ''
-                            ? 'rgba(0, 184, 148, 0.3)'
-                            : '#00b894'
-                        }
-                      />
-                    </TouchableOpacity>
-                  </View>
-                  <View style={styles.body}>
-                    <FlatList
-                      data={this.props.home.data}
-                      extraData={I18n.t('empty')}
-                      keyExtractor={(item, index) => index.toString()}
-                      renderItem={this._renderItem}
-                      ListEmptyComponent={this._renderEmptyItem}
-                    />
-                  </View>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.body}>
+                  <FlatList
+                    keyboardShouldPersistTaps="handled"
+                    data={this.props.home.data}
+                    extraData={I18n.t('empty')}
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={this._renderItem}
+                    ListEmptyComponent={this._renderEmptyItem}
+                  />
                 </View>
               </View>
-            </ScrollView>
-          </KeyboardAvoidingView>
+            </View>
+          </View>
         </View>
       </SafeAreaView>
     );

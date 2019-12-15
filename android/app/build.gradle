@@ -155,6 +155,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {
@@ -166,6 +174,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -182,15 +191,6 @@ android {
 
         }
     }
-
-    packagingOptions {
-        pickFirst '**/armeabi-v7a/libc++_shared.so'
-        pickFirst '**/x86/libc++_shared.so'
-        pickFirst '**/arm64-v8a/libc++_shared.so'
-        pickFirst '**/x86_64/libc++_shared.so'
-        pickFirst '**/x86/libjsc.so'
-        pickFirst '**/armeabi-v7a/libjsc.so'
-    }
 }
 
 dependencies {
@@ -198,11 +198,11 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     if (enableHermes) {
-      def hermesPath = "../../node_modules/hermesvm/android/";
-      debugImplementation files(hermesPath + "hermes-debug.aar")
-      releaseImplementation files(hermesPath + "hermes-release.aar")
+        def hermesPath = "../../node_modules/hermes-engine/android/";
+        debugImplementation files(hermesPath + "hermes-debug.aar")
+        releaseImplementation files(hermesPath + "hermes-release.aar")
     } else {
-      implementation jscFlavor
+        implementation jscFlavor
     }
 }
 
