@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 import I18n from '../../I18n';
 import { addData, deleteData } from '../../redux/actions';
 import { LOGO } from '../../configs';
+import { KeyboardAvoidingView } from '../../components';
 import styles from './styles';
 
 class Home extends Component {
@@ -75,54 +76,56 @@ class Home extends Component {
               <Text>Arief Yusron</Text>
             </View>
           </View>
-          <View style={styles.container}>
-            <View style={styles.wrapImage}>
-              <Image source={LOGO} style={styles.image} />
-            </View>
-            <View style={styles.wrapButtonIcon}>
-              <TouchableOpacity
-                style={styles.buttonIcon}
-                onPress={() => this.props.navigation.navigate('Setting')}>
-                <Icon name="settings" size={30} />
-                <Text>{I18n.t('setting')}</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.wrapContent}>
-              <View style={styles.content} elevation={5}>
-                <View style={styles.header}>
-                  <TextInput
-                    placeholder={I18n.t('typeHere')}
-                    style={styles.input}
-                    onChangeText={text => this.setState({ input: text })}
-                    value={this.state.input}
-                  />
-                  <TouchableOpacity
-                    onPress={() => this.addData()}
-                    disabled={this.state.input === ''}>
-                    <Icon
-                      name="add-circle-outline"
-                      size={20}
-                      color={
-                        this.state.input === ''
-                          ? 'rgba(0, 184, 148, 0.3)'
-                          : '#00b894'
-                      }
+          <KeyboardAvoidingView>
+            <View style={styles.container}>
+              <View style={styles.wrapImage}>
+                <Image source={LOGO} style={styles.image} />
+              </View>
+              <View style={styles.wrapButtonIcon}>
+                <TouchableOpacity
+                  style={styles.buttonIcon}
+                  onPress={() => this.props.navigation.navigate('Setting')}>
+                  <Icon name="settings" size={30} />
+                  <Text>{I18n.t('setting')}</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.wrapContent}>
+                <View style={styles.content} elevation={5}>
+                  <View style={styles.header}>
+                    <TextInput
+                      placeholder={I18n.t('typeHere')}
+                      style={styles.input}
+                      onChangeText={text => this.setState({ input: text })}
+                      value={this.state.input}
                     />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.body}>
-                  <FlatList
-                    keyboardShouldPersistTaps="handled"
-                    data={this.props.home.data}
-                    extraData={I18n.t('empty')}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={this._renderItem}
-                    ListEmptyComponent={this._renderEmptyItem}
-                  />
+                    <TouchableOpacity
+                      onPress={() => this.addData()}
+                      disabled={this.state.input === ''}>
+                      <Icon
+                        name="add-circle-outline"
+                        size={20}
+                        color={
+                          this.state.input === ''
+                            ? 'rgba(0, 184, 148, 0.3)'
+                            : '#00b894'
+                        }
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.body}>
+                    <FlatList
+                      keyboardShouldPersistTaps="handled"
+                      data={this.props.home.data}
+                      extraData={I18n.t('empty')}
+                      keyExtractor={(item, index) => index.toString()}
+                      renderItem={this._renderItem}
+                      ListEmptyComponent={this._renderEmptyItem}
+                    />
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
+          </KeyboardAvoidingView>
         </View>
       </SafeAreaView>
     );
