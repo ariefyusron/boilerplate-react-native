@@ -4,17 +4,22 @@ import { KeyboardAvoidingView, Platform } from 'react-native';
 
 import styles from './styles';
 
-const Component = ({ children }) => (
+const Component = ({ children, style }) => (
   <KeyboardAvoidingView
     behavior="padding"
-    style={styles.container}
+    style={style}
     enabled={Platform.OS === 'ios'}>
     {children}
   </KeyboardAvoidingView>
 );
 
 Component.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  style: PropTypes.object
+};
+
+Component.defaultProps = {
+  style: styles.container
 };
 
 export default Component;

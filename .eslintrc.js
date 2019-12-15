@@ -7,6 +7,7 @@ module.exports = {
     "prettier/prettier": 2,
     "comma-spacing": 2,
     "comma-dangle": 0,
-    "react/prop-types": 2
+    "react/prop-types": 2,
+    "react/require-default-props": 2
   }
 };

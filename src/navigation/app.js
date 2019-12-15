@@ -18,7 +18,6 @@ export default createStackNavigator(
   },
   {
     transitionConfig: () => ({
-      transitionSpec: 200,
       screenInterpolator:
         StackViewTransitionConfigs.SlideFromRightIOS.screenInterpolator
     })
