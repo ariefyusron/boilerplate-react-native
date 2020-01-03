@@ -8,6 +8,7 @@ module.exports = {
     "comma-spacing": 2,
     "comma-dangle": 0,
     "react/prop-types": 2,
-    "react/require-default-props": 2
+    "react/require-default-props": 2,
+    "react-hooks/exhaustive-deps": 0
   }
 };

@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { NavigationStackProp, StackHeaderProps } from 'react-navigation-stack';
-import { connect } from 'react-redux';
+import { NavigationStackProp } from 'react-navigation-stack';
+import { useSelector, useDispatch } from 'react-redux';
 
 import I18n from '../../I18n';
 import { chooseLanguage } from '../../redux/actions';
@@ -14,71 +14,59 @@ interface Setting {
 
 interface Props {
   navigation: NavigationStackProp;
-  chooseLanguage: (value: string) => void;
+}
+
+interface State {
   setting: Setting;
 }
 
-interface MapStateToProps {
-  setting: Setting;
-}
+const Setting = (props: Props) => {
+  const setting = useSelector((state: State) => state.setting);
+  const dispatch = useDispatch();
 
-class Setting extends Component<Props> {
-  static navigationOptions = ({ navigation }: StackHeaderProps) => ({
-    title: navigation.getParam('header') || I18n.t('setting')
-  });
+  const handleClick = async (value: string) => {
+    await dispatch(chooseLanguage(value));
+    props.navigation.setParams({ header: I18n.t('setting') });
+  };
 
-  async handleClick(value: string) {
-    await this.props.chooseLanguage(value);
-    this.props.navigation.setParams({ header: I18n.t('setting') });
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <TouchableHighlight
-            style={[styles.button, styles.border]}
-            underlayColor="rgba(100,100,100,0.1)"
-            disabled={this.props.setting.language === 'en'}
-            onPress={() => this.handleClick('en')}>
-            <Fragment>
-              <Text style={styles.text}>English</Text>
-              {this.props.setting.language === 'en' ? (
-                <View style={styles.wrapIcon}>
-                  <Icon name="check" size={20} />
-                </View>
-              ) : null}
-            </Fragment>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor="rgba(100,100,100,0.1)"
-            disabled={this.props.setting.language === 'id'}
-            onPress={() => this.handleClick('id')}>
-            <Fragment>
-              <Text style={styles.text}>Bahasa Indonesia</Text>
-              {this.props.setting.language === 'id' ? (
-                <View style={styles.wrapIcon}>
-                  <Icon name="check" size={20} />
-                </View>
-              ) : null}
-            </Fragment>
-          </TouchableHighlight>
-        </View>
+  return (
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <TouchableHighlight
+          style={[styles.button, styles.border]}
+          underlayColor="rgba(100,100,100,0.1)"
+          disabled={setting.language === 'en'}
+          onPress={() => handleClick('en')}>
+          <>
+            <Text style={styles.text}>English</Text>
+            {setting.language === 'en' ? (
+              <View style={styles.wrapIcon}>
+                <Icon name="check" size={20} />
+              </View>
+            ) : null}
+          </>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor="rgba(100,100,100,0.1)"
+          disabled={setting.language === 'id'}
+          onPress={() => handleClick('id')}>
+          <>
+            <Text style={styles.text}>Bahasa Indonesia</Text>
+            {setting.language === 'id' ? (
+              <View style={styles.wrapIcon}>
+                <Icon name="check" size={20} />
+              </View>
+            ) : null}
+          </>
+        </TouchableHighlight>
       </View>
-    );
-  }
-}
-
-const mapStateToProps = (state: MapStateToProps) => ({
-  setting: state.setting
-});
-
-const mapDispatchToProps = {
-  chooseLanguage
+    </View>
+  );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Setting);
+Setting.navigationOptions = (props: Props) => ({
+  title: props.navigation.getParam('header') || I18n.t('setting')
+});
+
+export default Setting;

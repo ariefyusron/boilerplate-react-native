@@ -1,54 +1,41 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
 import { NavigationStackProp } from 'react-navigation-stack';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { chooseLanguage } from '../redux/actions';
 import { isEnglish } from '../I18n';
 
 interface Props {
-  setting: Setting;
   navigation: NavigationStackProp;
-  chooseLanguage: (language: string) => void;
 }
 
 interface Setting {
   language: string;
 }
 
-interface MapStateToProps {
+interface State {
   setting: Setting;
 }
 
-class Main extends Component<Props> {
-  async componentDidMount() {
-    const { setting, navigation } = this.props;
+const Main = (props: Props) => {
+  const setting = useSelector((state: State) => state.setting);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
     if (setting.language === '') {
       if (isEnglish()) {
-        this.props.chooseLanguage('en');
+        dispatch(chooseLanguage('en'));
       } else {
-        this.props.chooseLanguage('id');
+        dispatch(chooseLanguage('id'));
       }
     } else {
-      this.props.chooseLanguage(setting.language);
+      dispatch(chooseLanguage(setting.language));
     }
 
-    navigation.navigate('App');
-  }
+    props.navigation.navigate('App');
+  }, []);
 
-  render() {
-    return null;
-  }
-}
-
-const mapStateToProps = (state: MapStateToProps) => ({
-  setting: state.setting
-});
-
-const mapDispatchToProps = {
-  chooseLanguage
+  return null;
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+export default Main;
