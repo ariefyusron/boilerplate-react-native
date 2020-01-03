@@ -1,6 +1,6 @@
 import {
   createStackNavigator,
-  StackViewTransitionConfigs
+  TransitionPresets
 } from 'react-navigation-stack';
 
 import Home from '../screens/Home';
@@ -11,15 +11,14 @@ export default createStackNavigator(
     Home: {
       screen: Home,
       navigationOptions: {
-        header: null
+        header: () => null
       }
     },
     Setting
   },
   {
-    transitionConfig: () => ({
-      screenInterpolator:
-        StackViewTransitionConfigs.SlideFromRightIOS.screenInterpolator
-    })
+    defaultNavigationOptions: {
+      ...TransitionPresets.SlideFromRightIOS
+    }
   }
 );

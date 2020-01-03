@@ -1,19 +1,33 @@
 import React, { Component, Fragment } from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import PropTypes from 'prop-types';
+import { NavigationStackProp, StackHeaderProps } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 
 import I18n from '../../I18n';
 import { chooseLanguage } from '../../redux/actions';
 import styles from './styles';
 
-class Setting extends Component {
-  static navigationOptions = ({ navigation }) => ({
+interface Setting {
+  language: string;
+}
+
+interface Props {
+  navigation: NavigationStackProp;
+  chooseLanguage: (value: string) => void;
+  setting: Setting;
+}
+
+interface MapStateToProps {
+  setting: Setting;
+}
+
+class Setting extends Component<Props> {
+  static navigationOptions = ({ navigation }: StackHeaderProps) => ({
     title: navigation.getParam('header') || I18n.t('setting')
   });
 
-  async handleClick(value) {
+  async handleClick(value: string) {
     await this.props.chooseLanguage(value);
     this.props.navigation.setParams({ header: I18n.t('setting') });
   }
@@ -21,7 +35,7 @@ class Setting extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.content} elevation={3}>
+        <View style={styles.content}>
           <TouchableHighlight
             style={[styles.button, styles.border]}
             underlayColor="rgba(100,100,100,0.1)"
@@ -56,13 +70,7 @@ class Setting extends Component {
   }
 }
 
-Setting.propTypes = {
-  setting: PropTypes.object.isRequired,
-  chooseLanguage: PropTypes.func.isRequired,
-  navigation: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: MapStateToProps) => ({
   setting: state.setting
 });
 

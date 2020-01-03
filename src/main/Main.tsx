@@ -1,23 +1,38 @@
 import { Component } from 'react';
-import PropTypes from 'prop-types';
+import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 
 import { chooseLanguage } from '../redux/actions';
 import { isEnglish } from '../I18n';
 
-class Main extends Component {
+interface Props {
+  setting: Setting;
+  navigation: NavigationStackProp;
+  chooseLanguage: (language: string) => void;
+}
+
+interface Setting {
+  language: string;
+}
+
+interface MapStateToProps {
+  setting: Setting;
+}
+
+class Main extends Component<Props> {
   async componentDidMount() {
-    if (this.props.setting.language === '') {
+    const { setting, navigation } = this.props;
+    if (setting.language === '') {
       if (isEnglish()) {
         this.props.chooseLanguage('en');
       } else {
         this.props.chooseLanguage('id');
       }
     } else {
-      this.props.chooseLanguage(this.props.setting.language);
+      this.props.chooseLanguage(setting.language);
     }
 
-    this.props.navigation.navigate('App');
+    navigation.navigate('App');
   }
 
   render() {
@@ -25,13 +40,7 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
-  setting: PropTypes.object.isRequired,
-  chooseLanguage: PropTypes.func.isRequired,
-  navigation: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: MapStateToProps) => ({
   setting: state.setting
 });
 

@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: '100%',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2
+    shadowOpacity: 0.2,
+    elevation: 5
   },
   header: {
     padding: 10,

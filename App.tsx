@@ -13,14 +13,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './src/redux/store';
 import NavigationApp from './src/navigation';
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <NavigationApp />
-      </PersistGate>
-    </Provider>
-  );
-};
+const App = () => (
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <NavigationApp />
+    </PersistGate>
+  </Provider>
+);
 
 export default App;

@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 50,
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.2
+    shadowOpacity: 0.2,
+    elevation: 3
   },
   button: {
     paddingVertical: 20,

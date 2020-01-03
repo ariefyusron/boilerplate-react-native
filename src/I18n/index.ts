@@ -9,7 +9,7 @@ I18n.translations = {
   id
 };
 
-export const switchLanguage = language => {
+export const switchLanguage = (language: string) => {
   I18n.locale = language;
 };
 

@@ -11,8 +11,7 @@ import {
   SafeAreaView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import PropTypes from 'prop-types';
-import { withNavigationFocus } from 'react-navigation';
+import { NavigationStackProp } from 'react-navigation-stack';
 import { connect } from 'react-redux';
 
 import I18n from '../../I18n';
@@ -21,22 +20,43 @@ import { LOGO } from '../../configs';
 import { KeyboardAvoidingView } from '../../components';
 import styles from './styles';
 
-class Home extends Component {
-  constructor() {
-    super();
+interface Props {
+  deleteData: (index: number) => void;
+  addData: (input: string) => void;
+  home: Data;
+  navigation: NavigationStackProp;
+}
+
+interface State {
+  input: string;
+}
+
+interface Data {
+  data: Array<string>;
+}
+
+interface MapStateToProps {
+  home: Data;
+}
+
+declare const global: { HermesInternal: null | object };
+
+class Home extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     this.state = {
       input: ''
     };
   }
 
-  onClickTrash(item) {
+  onClickTrash(item: number) {
     Alert.alert(I18n.t('delete'), I18n.t('youSure'), [
       { text: I18n.t('no') },
       { text: I18n.t('yes'), onPress: () => this.deleteData(item) }
     ]);
   }
 
-  deleteData(index) {
+  deleteData(index: number) {
     this.props.deleteData(index);
   }
 
@@ -46,7 +66,7 @@ class Home extends Component {
     Keyboard.dismiss();
   }
 
-  _renderItem = ({ item, index }) => (
+  _renderItem = ({ item, index }: any) => (
     <View style={styles.row}>
       <Text>{item}</Text>
       <TouchableOpacity onPress={() => this.onClickTrash(index)}>
@@ -70,7 +90,7 @@ class Home extends Component {
             <View style={styles.wrapAuthor}>
               <Text>
                 {`Hermes: ${
-                  global.HermesInternal == null ? I18n.t('off') : I18n.t('on')
+                  global.HermesInternal === null ? I18n.t('off') : I18n.t('on')
                 }`}
               </Text>
               <Text>Arief Yusron</Text>
@@ -90,7 +110,7 @@ class Home extends Component {
                 </TouchableOpacity>
               </View>
               <View style={styles.wrapContent}>
-                <View style={styles.content} elevation={5}>
+                <View style={styles.content}>
                   <View style={styles.header}>
                     <TextInput
                       placeholder={I18n.t('typeHere')}
@@ -132,14 +152,7 @@ class Home extends Component {
   }
 }
 
-Home.propTypes = {
-  home: PropTypes.object.isRequired,
-  addData: PropTypes.func.isRequired,
-  deleteData: PropTypes.func.isRequired,
-  navigation: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: MapStateToProps) => ({
   home: state.home
 });
 
@@ -151,4 +164,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withNavigationFocus(Home));
+)(Home);
