@@ -19,7 +19,9 @@ import { addData, deleteData } from "../../redux/actions";
 import { IMAGES } from "../../configs";
 import { KeyboardAvoidingView } from "../../components";
 import styles from "./styles";
-import { Props, State, global } from "./types";
+import { Props, State } from "./types";
+
+declare const global: { HermesInternal: null | {} };
 
 const Home = (props: Props) => {
   const [input, setInput] = useState("");
@@ -71,7 +73,7 @@ const Home = (props: Props) => {
           <View style={styles.wrapAuthor}>
             <Text>
               {`Hermes: ${
-                global.HermesInternal === null ? I18n.t("off") : I18n.t("on")
+                global.HermesInternal == null ? I18n.t("off") : I18n.t("on")
               }`}
             </Text>
             <Text>Arief Yusron</Text>

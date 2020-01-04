@@ -11,5 +11,3 @@ interface Data {
 export interface State {
   home: Data;
 }
-
-export declare const global: { HermesInternal: null | object };
