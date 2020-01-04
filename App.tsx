@@ -6,12 +6,12 @@
  * @flow
  */
 
-import React from 'react';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import React from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
-import { persistor, store } from './src/redux/store';
-import NavigationApp from './src/navigation';
+import { persistor, store } from "./src/redux/store";
+import NavigationApp from "./src/navigation";
 
 const App = () => (
   <Provider store={store}>

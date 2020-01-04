@@ -1,9 +1,5 @@
-import { ADD_DATA, DELETE_DATA } from '../actions';
-
-type Action = {
-  type: string;
-  payload: any;
-};
+import { ADD_DATA, DELETE_DATA } from "../actions";
+import { Action } from "../types";
 
 type InitialState = {
   data: Array<any>;

@@ -1,14 +1,13 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
-  rules: {
-    "no-console": 2,
-    "no-unused-vars": 2,
-    "prettier/prettier": 2,
-    "comma-spacing": 2,
-    "comma-dangle": 0,
-    "react/prop-types": 2,
-    "react/require-default-props": 2,
-    "react-hooks/exhaustive-deps": 0
+  "extends": "react-native-wcandillon",
+  "rules": {
+    "react/no-array-index-key": "off",
+    "react/jsx-no-bind": "off",
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "no-console": 2
   }
 };

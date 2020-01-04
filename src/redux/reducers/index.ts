@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import setting from './setting';
-import home from './home';
+import setting from "./setting";
+import home from "./home";
 
 export default combineReducers({
   setting,

@@ -1,10 +1,10 @@
 import {
-  createStackNavigator,
-  TransitionPresets
-} from 'react-navigation-stack';
+  TransitionPresets,
+  createStackNavigator
+} from "react-navigation-stack";
 
-import Home from '../screens/Home';
-import Setting from '../screens/Setting';
+import Home from "../screens/Home";
+import Setting from "../screens/Setting";
 
 export default createStackNavigator(
   {

@@ -1,3 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-undef */
+/* eslint-disable import/order */
+/* eslint-disable quotes */
+/* eslint-disable prettier/prettier */
 /**
  * @format
  */

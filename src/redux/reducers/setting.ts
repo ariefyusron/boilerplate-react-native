@@ -1,16 +1,12 @@
-import { CHOOSE_LANGUAGE } from '../actions';
-
-type Action = {
-  type: string;
-  payload: any;
-};
+import { CHOOSE_LANGUAGE } from "../actions";
+import { Action } from "../types";
 
 type InitialState = {
   language: string;
 };
 
 const initialState: InitialState = {
-  language: ''
+  language: ""
 };
 
 export default (state = initialState, action: Action) => {
