@@ -1,12 +1,24 @@
 import React from "react";
 import { Text, TouchableHighlight, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { NavigationStackProp } from "react-navigation-stack";
 import { useDispatch, useSelector } from "react-redux";
 
 import I18n from "../../I18n";
 import { chooseLanguage } from "../../redux/actions";
 import styles from "./styles";
-import { Props, State } from "./types";
+
+interface Setting {
+  language: string;
+}
+
+interface Props {
+  navigation: NavigationStackProp;
+}
+
+interface State {
+  setting: Setting;
+}
 
 const Setting = (props: Props) => {
   const setting = useSelector((state: State) => state.setting);

@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { withNavigationFocus } from "react-navigation";
+import { NavigationStackProp } from "react-navigation-stack";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import I18n from "../../I18n";
@@ -19,7 +20,18 @@ import { addData, deleteData } from "../../redux/actions";
 import { IMAGES } from "../../configs";
 import { KeyboardAvoidingView } from "../../components";
 import styles from "./styles";
-import { Props, State } from "./types";
+
+interface Props {
+  navigation: NavigationStackProp;
+}
+
+interface Data {
+  data: Array<string>;
+}
+
+interface State {
+  home: Data;
+}
 
 declare const global: { HermesInternal: null | {} };
 

@@ -1,8 +1,12 @@
-import React from "react";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import React, { ReactChild } from "react";
+import { KeyboardAvoidingView, Platform, ViewStyle } from "react-native";
 
 import styles from "./styles";
-import { Props } from "./types";
+
+interface Props {
+  children: ReactChild;
+  style?: ViewStyle;
+}
 
 const Component = ({ children, style }: Props) => (
   <KeyboardAvoidingView
