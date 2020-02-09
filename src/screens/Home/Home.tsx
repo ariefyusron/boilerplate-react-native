@@ -15,25 +15,20 @@ import { useNavigation } from "@react-navigation/native";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import I18n from "../../I18n";
-import { addData, deleteData } from "../../redux/actions";
 import { IMAGES } from "../../configs";
 import { KeyboardAvoidingView } from "../../components";
 import styles from "./styles";
 
-interface Data {
-  data: Array<string>;
-}
-
-interface State {
-  home: Data;
-}
+// action & types redux
+import { addData, deleteData } from "../../redux/actions";
+import { Reducers } from "../../redux/types";
 
 declare const global: { HermesInternal: null | {} };
 
 const Home = () => {
   const [input, setInput] = useState("");
   const { home } = useSelector(
-    (state: State) => ({
+    (state: Reducers) => ({
       home: state.home
     }),
     shallowEqual

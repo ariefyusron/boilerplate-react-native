@@ -1,22 +1,18 @@
 import { ADD_DATA, DELETE_DATA } from "../actions";
-import { Action } from "../types";
+import { Action, HomeState } from "../types";
 
-type InitialState = {
-  data: Array<any>;
-};
-
-const initialState: InitialState = {
+const initialState: HomeState = {
   data: []
 };
 
-export default (state = initialState, action: Action) => {
-  switch (action.type) {
+export default (state = initialState, { type, payload }: Action) => {
+  switch (type) {
     case ADD_DATA:
-      return { ...state, data: [action.payload.data, ...state.data] };
+      return { ...state, data: [payload.data, ...state.data] };
     case DELETE_DATA:
       return {
         ...state,
-        data: state.data.filter((data, index) => index !== action.payload.data)
+        data: state.data.filter((data, index) => index !== payload.data)
       };
     default:
       return state;

@@ -1,18 +1,14 @@
 import { CHOOSE_LANGUAGE } from "../actions";
-import { Action } from "../types";
+import { Action, SettingState } from "../types";
 
-type InitialState = {
-  language: string;
-};
-
-const initialState: InitialState = {
+const initialState: SettingState = {
   language: ""
 };
 
-export default (state = initialState, action: Action) => {
-  switch (action.type) {
+export default (state = initialState, { type, payload }: Action) => {
+  switch (type) {
     case CHOOSE_LANGUAGE:
-      return { ...state, language: action.payload.data };
+      return { ...state, language: payload.data };
     default:
       return state;
   }

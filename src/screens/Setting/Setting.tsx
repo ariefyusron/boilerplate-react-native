@@ -5,19 +5,14 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
 import I18n from "../../I18n";
-import { chooseLanguage } from "../../redux/actions";
 import styles from "./styles";
 
-interface Setting {
-  language: string;
-}
-
-interface State {
-  setting: Setting;
-}
+// action & types redux
+import { chooseLanguage } from "../../redux/actions";
+import { Reducers } from "../../redux/types";
 
 const Setting = () => {
-  const setting = useSelector((state: State) => state.setting);
+  const setting = useSelector((state: Reducers) => state.setting);
   const dispatch = useDispatch();
   const { setParams } = useNavigation();
 
