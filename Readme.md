@@ -1,4 +1,4 @@
-React Native Boilerplate (TypeScript) v1.3.0 - update 09 Feb 2020
+React Native Boilerplate (TypeScript) v1.3.x
 ===========================================
 
 
