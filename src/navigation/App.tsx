@@ -1,25 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import {
-  TransitionPresets,
-  createStackNavigator
-} from "@react-navigation/stack";
+import { useDispatch, useSelector } from "react-redux";
 
-import Home from "../screens/Home";
-import Setting from "../screens/Setting";
+import Stack from "./Stack";
+import { isEnglish } from "../I18n";
 
-const { Navigator, Screen } = createStackNavigator();
+// action & types redux
+import { chooseLanguage } from "../redux/actions";
+import { Reducers } from "../redux/types";
 
-const App = () => (
-  <NavigationContainer>
-    <Navigator
-      initialRouteName="Home"
-      screenOptions={{ ...TransitionPresets.SlideFromRightIOS }}
-    >
-      <Screen name="Home" component={Home} options={{ header: () => null }} />
-      <Screen name="Setting" component={Setting} />
-    </Navigator>
-  </NavigationContainer>
-);
+const App = () => {
+  const setting = useSelector((state: Reducers) => state.setting);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (setting.language === "") {
+      if (isEnglish()) {
+        dispatch(chooseLanguage("en"));
+      } else {
+        dispatch(chooseLanguage("id"));
+      }
+    } else {
+      dispatch(chooseLanguage(setting.language));
+    }
+  }, []);
+
+  return (
+    <NavigationContainer>
+      <Stack />
+    </NavigationContainer>
+  );
+};
 
 export default App;

@@ -1,10 +1,8 @@
 import React from "react";
 import { Text, TouchableHighlight, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
-import I18n from "../../I18n";
 import styles from "./styles";
 
 // action & types redux
@@ -14,11 +12,9 @@ import { Reducers } from "../../redux/types";
 const Setting = () => {
   const setting = useSelector((state: Reducers) => state.setting);
   const dispatch = useDispatch();
-  const { setParams } = useNavigation();
 
   const _handleClick = (value: string) => {
     dispatch(chooseLanguage(value));
-    setParams({ header: I18n.t("setting") });
   };
 
   return (
