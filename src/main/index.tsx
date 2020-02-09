@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { chooseLanguage } from "../redux/actions";
 import { isEnglish } from "../I18n";
-import { Props, State } from "./types";
+import { State } from "./types";
 
-const Main = (props: Props) => {
+const Main = () => {
   const setting = useSelector((state: State) => state.setting);
   const dispatch = useDispatch();
 
@@ -19,8 +19,6 @@ const Main = (props: Props) => {
     } else {
       dispatch(chooseLanguage(setting.language));
     }
-
-    props.navigation.navigate("App");
   }, []);
 
   return null;

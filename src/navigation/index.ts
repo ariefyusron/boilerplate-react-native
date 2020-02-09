@@ -1,11 +1,3 @@
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import App from "./App";
 
-import Main from "../main";
-import App from "./app";
-
-const switchNavigator = createSwitchNavigator({
-  Main,
-  App
-});
-
-export default createAppContainer(switchNavigator);
+export default App;

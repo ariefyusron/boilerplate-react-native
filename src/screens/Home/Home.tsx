@@ -11,8 +11,7 @@ import {
   View
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { withNavigationFocus } from "react-navigation";
-import { NavigationStackProp } from "react-navigation-stack";
+import { useNavigation } from "@react-navigation/native";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import I18n from "../../I18n";
@@ -20,10 +19,6 @@ import { addData, deleteData } from "../../redux/actions";
 import { IMAGES } from "../../configs";
 import { KeyboardAvoidingView } from "../../components";
 import styles from "./styles";
-
-interface Props {
-  navigation: NavigationStackProp;
-}
 
 interface Data {
   data: Array<string>;
@@ -35,7 +30,7 @@ interface State {
 
 declare const global: { HermesInternal: null | {} };
 
-const Home = (props: Props) => {
+const Home = () => {
   const [input, setInput] = useState("");
   const { home } = useSelector(
     (state: State) => ({
@@ -44,19 +39,20 @@ const Home = (props: Props) => {
     shallowEqual
   );
   const dispatch = useDispatch();
+  const { navigate } = useNavigation();
 
-  const handleDeleteData = (index: number) => {
+  const _handleDeleteData = (index: number) => {
     dispatch(deleteData(index));
   };
 
-  const onClickTrash = (item: number) => {
+  const _onClickTrash = (item: number) => {
     Alert.alert(I18n.t("delete"), I18n.t("youSure"), [
       { text: I18n.t("no") },
-      { text: I18n.t("yes"), onPress: () => handleDeleteData(item) }
+      { text: I18n.t("yes"), onPress: () => _handleDeleteData(item) }
     ]);
   };
 
-  const handleAddData = () => {
+  const _handleAddData = () => {
     dispatch(addData(input));
     setInput("");
     Keyboard.dismiss();
@@ -65,7 +61,7 @@ const Home = (props: Props) => {
   const _renderItem = ({ item, index }: any) => (
     <View style={styles.row}>
       <Text>{item}</Text>
-      <TouchableOpacity onPress={() => onClickTrash(index)}>
+      <TouchableOpacity onPress={() => _onClickTrash(index)}>
         <Icon name="delete" size={20} color="#d63031" />
       </TouchableOpacity>
     </View>
@@ -99,7 +95,7 @@ const Home = (props: Props) => {
             <View style={styles.wrapButtonIcon}>
               <TouchableOpacity
                 style={styles.buttonIcon}
-                onPress={() => props.navigation.navigate("Setting")}
+                onPress={() => navigate("Setting")}
               >
                 <Icon name="settings" size={30} />
                 <Text>{I18n.t("setting")}</Text>
@@ -115,7 +111,7 @@ const Home = (props: Props) => {
                     value={input}
                   />
                   <TouchableOpacity
-                    onPress={() => handleAddData()}
+                    onPress={() => _handleAddData()}
                     disabled={input === ""}
                   >
                     <Icon
@@ -146,4 +142,4 @@ const Home = (props: Props) => {
   );
 };
 
-export default withNavigationFocus(Home);
+export default Home;
