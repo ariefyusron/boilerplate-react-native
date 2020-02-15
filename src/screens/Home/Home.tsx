@@ -11,7 +11,7 @@ import {
   View
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import I18n from "../../I18n";
@@ -26,6 +26,7 @@ import { Reducers } from "../../redux/types";
 declare const global: { HermesInternal: null | {} };
 
 const Home = () => {
+  useIsFocused();
   const [input, setInput] = useState("");
   const { home } = useSelector(
     (state: Reducers) => ({
