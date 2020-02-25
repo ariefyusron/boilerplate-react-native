@@ -15,7 +15,7 @@ import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import I18n from "../../I18n";
-import { IMAGES } from "../../configs";
+import { COLORS, IMAGES } from "../../configs";
 import { KeyboardAvoidingView } from "../../components";
 import styles from "./styles";
 
@@ -58,7 +58,7 @@ const Home = () => {
     <View style={styles.row}>
       <Text>{item}</Text>
       <TouchableOpacity onPress={() => _onClickTrash(index)}>
-        <Icon name="delete" size={20} color="#d63031" />
+        <Icon name="delete" size={20} color={COLORS.red} />
       </TouchableOpacity>
     </View>
   );
@@ -113,9 +113,7 @@ const Home = () => {
                     <Icon
                       name="add-circle-outline"
                       size={20}
-                      color={
-                        input === "" ? "rgba(0, 184, 148, 0.3)" : "#00b894"
-                      }
+                      color={input === "" ? COLORS.green03 : COLORS.green}
                     />
                   </TouchableOpacity>
                 </View>

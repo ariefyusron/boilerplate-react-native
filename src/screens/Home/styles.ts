@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native";
 
 import { heightPercent } from "../../utils";
+import { COLORS } from "../../configs";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
   },
   scrollView: {
-    backgroundColor: "#FFFFFF"
+    backgroundColor: COLORS.background
   },
   wrapImage: {
     width: "100%",
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   },
   content: {
     width: "80%",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.background,
     borderRadius: 10,
     height: "100%",
     shadowOffset: { width: 0, height: 1 },
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   },
   header: {
     padding: 10,
-    borderBottomColor: "rgba(0,0,0,0.1)",
+    borderBottomColor: COLORS.black01,
     borderBottomWidth: 1,
     flexDirection: "row",
     justifyContent: "space-between",

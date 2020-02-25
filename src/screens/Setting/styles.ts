@@ -1,14 +1,16 @@
 import { StyleSheet } from "react-native";
 
+import { COLORS } from "../../configs";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.background,
     alignItems: "center"
   },
   content: {
     width: "80%",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.background,
     borderRadius: 10,
     marginTop: 50,
     shadowOffset: { width: 0, height: 1 },
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   border: {
-    borderBottomColor: "rgba(0,0,0,0.2)",
+    borderBottomColor: COLORS.black02,
     borderBottomWidth: 0.5
   },
   text: {

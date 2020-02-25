@@ -4,6 +4,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./styles";
+import { COLORS } from "../../configs";
 
 // action & types redux
 import { chooseLanguage } from "../../redux/actions";
@@ -22,7 +23,7 @@ const Setting = () => {
       <View style={styles.content}>
         <TouchableHighlight
           style={[styles.button, styles.border]}
-          underlayColor="rgba(100,100,100,0.1)"
+          underlayColor={COLORS.underlay}
           disabled={setting.language === "en"}
           onPress={() => _handleClick("en")}
         >
@@ -37,7 +38,7 @@ const Setting = () => {
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
-          underlayColor="rgba(100,100,100,0.1)"
+          underlayColor={COLORS.underlay}
           disabled={setting.language === "id"}
           onPress={() => _handleClick("id")}
         >
