@@ -24,6 +24,8 @@ export interface Reducers {
 
 export interface HomeState {
   data: any[];
+  isLoadingGetSeason: boolean;
+  listSeasons: any[];
 }
 
 export interface SettingState {

@@ -8,6 +8,6 @@ module.exports = {
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "react-hooks/exhaustive-deps": "off",
-    "no-console": 2
+    "no-console": "error"
   }
 };

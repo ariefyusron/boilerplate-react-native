@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -20,7 +20,7 @@ import { KeyboardAvoidingView } from "../../components";
 import styles from "./styles";
 
 // action & types redux
-import { addData, deleteData } from "../../redux/actions";
+import { addData, deleteData, getSeasons } from "../../redux/actions";
 import { Reducers } from "../../redux/types";
 
 declare const global: { HermesInternal: null | {} };
@@ -36,6 +36,10 @@ const Home = () => {
   );
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
+
+  useEffect(() => {
+    dispatch(getSeasons());
+  }, []);
 
   const _handleDeleteData = (index: number) => {
     dispatch(deleteData(index));
