@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-native start --reset-cache",
     "test": "jest",
-    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint": "eslint --ext .js,.ts,.tsx src --cache",
     "android": "react-native run-android",
     "android:release": "react-native run-android --variant=release",
     "ios": "react-native run-ios",
