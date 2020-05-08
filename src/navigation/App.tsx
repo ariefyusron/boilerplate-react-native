@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,20 +10,25 @@ import { chooseLanguage } from "../redux/actions";
 import { Reducers } from "../redux/types";
 
 const App = () => {
-  const setting = useSelector((state: Reducers) => state.setting);
   const dispatch = useDispatch();
 
+  const [first, setFirst] = useState(true);
+  const settingState = useSelector((state: Reducers) => state.setting);
+
   useEffect(() => {
-    if (setting.language === "") {
-      if (isEnglish()) {
-        dispatch(chooseLanguage("en"));
+    if (first) {
+      setFirst(false);
+      if (settingState.language === "") {
+        if (isEnglish()) {
+          dispatch(chooseLanguage("en"));
+        } else {
+          dispatch(chooseLanguage("id"));
+        }
       } else {
-        dispatch(chooseLanguage("id"));
+        dispatch(chooseLanguage(settingState.language));
       }
-    } else {
-      dispatch(chooseLanguage(setting.language));
     }
-  }, []);
+  }, [dispatch, first, settingState.language]);
 
   return (
     <NavigationContainer>

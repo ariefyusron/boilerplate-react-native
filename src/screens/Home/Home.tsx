@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -27,36 +27,43 @@ declare const global: { HermesInternal: null | {} };
 
 const Home = () => {
   useIsFocused();
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+
   const [input, setInput] = useState("");
-  const { home } = useSelector(
+  const { homeState } = useSelector(
     (state: Reducers) => ({
-      home: state.home
+      homeState: state.home
     }),
     shallowEqual
   );
-  const dispatch = useDispatch();
-  const { navigate } = useNavigation();
 
   useEffect(() => {
     dispatch(getSeasons());
-  }, []);
+  }, [dispatch]);
 
-  const _handleDeleteData = (index: number) => {
-    dispatch(deleteData(index));
-  };
+  const _handleDeleteData = useCallback(
+    (index: number) => {
+      dispatch(deleteData(index));
+    },
+    [dispatch]
+  );
 
-  const _onClickTrash = (item: number) => {
-    Alert.alert(I18n.t("delete"), I18n.t("youSure"), [
-      { text: I18n.t("no") },
-      { text: I18n.t("yes"), onPress: () => _handleDeleteData(item) }
-    ]);
-  };
+  const _onClickTrash = useCallback(
+    (item: number) => {
+      Alert.alert(I18n.t("delete"), I18n.t("youSure"), [
+        { text: I18n.t("no") },
+        { text: I18n.t("yes"), onPress: () => _handleDeleteData(item) }
+      ]);
+    },
+    [_handleDeleteData]
+  );
 
-  const _handleAddData = () => {
+  const _handleAddData = useCallback(() => {
     dispatch(addData(input));
     setInput("");
     Keyboard.dismiss();
-  };
+  }, [dispatch, input]);
 
   const _renderItem = ({ item, index }: any) => (
     <View style={styles.row}>
@@ -95,7 +102,7 @@ const Home = () => {
             <View style={styles.wrapButtonIcon}>
               <TouchableOpacity
                 style={styles.buttonIcon}
-                onPress={() => navigate("Setting")}
+                onPress={() => navigation.navigate("Setting")}
               >
                 <Icon name="settings" size={30} />
                 <Text>{I18n.t("setting")}</Text>
@@ -124,7 +131,7 @@ const Home = () => {
                 <View style={styles.body}>
                   <FlatList
                     keyboardShouldPersistTaps="handled"
-                    data={home.data}
+                    data={homeState.data}
                     extraData={I18n.t("empty")}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={_renderItem}

@@ -1,4 +1,4 @@
-import React, { ReactChild } from "react";
+import React, { ReactChild, memo } from "react";
 import { KeyboardAvoidingView, Platform, ViewStyle } from "react-native";
 
 import styles from "./styles";
@@ -22,4 +22,4 @@ Component.defaultProps = {
   style: styles.container
 };
 
-export default Component;
+export default memo(Component);

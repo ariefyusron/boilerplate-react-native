@@ -7,7 +7,6 @@ module.exports = {
     "import/prefer-default-export": "off",
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "react-hooks/exhaustive-deps": "off",
     "no-console": "error"
   }
 };

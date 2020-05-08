@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Text, TouchableHighlight, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +11,16 @@ import { chooseLanguage } from "../../redux/actions";
 import { Reducers } from "../../redux/types";
 
 const Setting = () => {
-  const setting = useSelector((state: Reducers) => state.setting);
   const dispatch = useDispatch();
 
-  const _handleClick = (value: string) => {
-    dispatch(chooseLanguage(value));
-  };
+  const settingState = useSelector((state: Reducers) => state.setting);
+
+  const _handleClick = useCallback(
+    (value: string) => {
+      dispatch(chooseLanguage(value));
+    },
+    [dispatch]
+  );
 
   return (
     <View style={styles.container}>
@@ -24,12 +28,12 @@ const Setting = () => {
         <TouchableHighlight
           style={[styles.button, styles.border]}
           underlayColor={COLORS.underlay}
-          disabled={setting.language === "en"}
+          disabled={settingState.language === "en"}
           onPress={() => _handleClick("en")}
         >
           <>
             <Text style={styles.text}>English</Text>
-            {setting.language === "en" ? (
+            {settingState.language === "en" ? (
               <View style={styles.wrapIcon}>
                 <Icon name="check" size={20} />
               </View>
@@ -39,12 +43,12 @@ const Setting = () => {
         <TouchableHighlight
           style={styles.button}
           underlayColor={COLORS.underlay}
-          disabled={setting.language === "id"}
+          disabled={settingState.language === "id"}
           onPress={() => _handleClick("id")}
         >
           <>
             <Text style={styles.text}>Bahasa Indonesia</Text>
-            {setting.language === "id" && (
+            {settingState.language === "id" && (
               <View style={styles.wrapIcon}>
                 <Icon name="check" size={20} />
               </View>
