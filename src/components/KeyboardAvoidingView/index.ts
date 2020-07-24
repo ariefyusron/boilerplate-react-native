@@ -1,3 +1,3 @@
-import KeyboardAvoidingView from "./KeyboardAvoidingView";
+import Component from "./Component";
 
-export default KeyboardAvoidingView;
+export default Component;

@@ -25,7 +25,7 @@ import { Reducers } from "../../redux/types";
 
 declare const global: { HermesInternal: null | {} };
 
-const Home = () => {
+const Component = () => {
   useIsFocused();
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -147,4 +147,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Component;

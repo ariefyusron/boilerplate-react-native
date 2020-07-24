@@ -10,7 +10,7 @@ import { COLORS } from "../../configs";
 import { chooseLanguage } from "../../redux/actions";
 import { Reducers } from "../../redux/types";
 
-const Setting = () => {
+const Component = () => {
   const dispatch = useDispatch();
 
   const settingState = useSelector((state: Reducers) => state.setting);
@@ -60,4 +60,4 @@ const Setting = () => {
   );
 };
 
-export default Setting;
+export default Component;

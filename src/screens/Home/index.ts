@@ -1,3 +1,3 @@
-import Home from "./Home";
+import Component from "./Component";
 
-export default Home;
+export default Component;

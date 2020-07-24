@@ -8,7 +8,7 @@ interface Params {
   payload?: Payload;
 }
 
-export type Dispatch = (params: Params) => void;
+export type Dispatch = (params: Params | Function) => void;
 export type GetState = () => Reducers;
 
 export interface Action {
