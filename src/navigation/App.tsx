@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Platform, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -32,6 +33,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
+      {Platform.OS === "ios" && <StatusBar barStyle="dark-content" />}
       <Stack />
     </NavigationContainer>
   );
