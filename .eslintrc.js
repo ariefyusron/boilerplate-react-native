@@ -7,6 +7,12 @@ module.exports = {
     "import/prefer-default-export": "off",
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "no-console": "error"
+    "no-console": "error",
+    "react/jsx-curly-newline": "off",
+    "no-undef": "off",
+    "no-unused-expressions": "off",
+    "react/jsx-wrap-multilines": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/camelcase": "off"
   }
 };
