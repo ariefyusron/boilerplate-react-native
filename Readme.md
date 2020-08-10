@@ -1,4 +1,4 @@
-React Native Boilerplate (TypeScript) v2.0.x
+React Native Boilerplate (TypeScript) v2.1.x
 ===========================================
 
 
