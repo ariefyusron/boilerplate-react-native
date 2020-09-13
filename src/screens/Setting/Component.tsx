@@ -13,7 +13,7 @@ import { Reducers } from "../../redux/types";
 const Component = () => {
   const dispatch = useDispatch();
 
-  const settingState = useSelector((state: Reducers) => state.setting);
+  const persistState = useSelector((state: Reducers) => state.persist);
 
   const _handleClick = useCallback(
     (value: string) => {
@@ -28,12 +28,12 @@ const Component = () => {
         <TouchableHighlight
           style={[styles.button, styles.border]}
           underlayColor={COLORS.underlay}
-          disabled={settingState.language === "en"}
+          disabled={persistState.language === "en"}
           onPress={() => _handleClick("en")}
         >
           <>
             <Text style={styles.text}>English</Text>
-            {settingState.language === "en" ? (
+            {persistState.language === "en" ? (
               <View style={styles.wrapIcon}>
                 <Icon name="check" size={20} />
               </View>
@@ -43,12 +43,12 @@ const Component = () => {
         <TouchableHighlight
           style={styles.button}
           underlayColor={COLORS.underlay}
-          disabled={settingState.language === "id"}
+          disabled={persistState.language === "id"}
           onPress={() => _handleClick("id")}
         >
           <>
             <Text style={styles.text}>Bahasa Indonesia</Text>
-            {settingState.language === "id" && (
+            {persistState.language === "id" && (
               <View style={styles.wrapIcon}>
                 <Icon name="check" size={20} />
               </View>

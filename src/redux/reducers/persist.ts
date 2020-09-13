@@ -1,7 +1,7 @@
 import { CHOOSE_LANGUAGE } from "../actions";
-import { Action, SettingState } from "../types";
+import { Action, PersistState } from "../types";
 
-const initialState: SettingState = {
+const initialState: PersistState = {
   language: ""
 };
 

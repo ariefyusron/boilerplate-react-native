@@ -14,22 +14,22 @@ const App = () => {
   const dispatch = useDispatch();
 
   const [first, setFirst] = useState(true);
-  const settingState = useSelector((state: Reducers) => state.setting);
+  const persistState = useSelector((state: Reducers) => state.persist);
 
   useEffect(() => {
     if (first) {
       setFirst(false);
-      if (settingState.language === "") {
+      if (persistState.language === "") {
         if (isEnglish()) {
           dispatch(chooseLanguage("en"));
         } else {
           dispatch(chooseLanguage("id"));
         }
       } else {
-        dispatch(chooseLanguage(settingState.language));
+        dispatch(chooseLanguage(persistState.language));
       }
     }
-  }, [dispatch, first, settingState.language]);
+  }, [dispatch, first, persistState.language]);
 
   return (
     <NavigationContainer>

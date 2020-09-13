@@ -19,7 +19,7 @@ export interface Action {
 // Reducer
 export interface Reducers {
   home: HomeState;
-  setting: SettingState;
+  persist: PersistState;
 }
 
 export interface HomeState {
@@ -28,6 +28,6 @@ export interface HomeState {
   listSeasons: any[];
 }
 
-export interface SettingState {
+export interface PersistState {
   language: string;
 }

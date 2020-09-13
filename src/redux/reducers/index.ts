@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import setting from "./setting";
+import persist from "./persist";
 import home from "./home";
 
 export default combineReducers({
-  setting,
+  persist,
   home
 });
