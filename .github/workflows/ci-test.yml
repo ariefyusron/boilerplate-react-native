@@ -1,0 +1,21 @@
+name: CI jest testing
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  install-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        # install dependencies
+      - run: yarn install
+        # runing test
+      - run: yarn jest --coverage --silent
