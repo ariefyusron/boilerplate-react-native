@@ -10,13 +10,12 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
 import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import I18n from "../../I18n";
 import { COLORS, IMAGES } from "../../configs";
-import { KeyboardAvoidingView } from "../../components";
+import { Icon, KeyboardAvoidingView } from "../../components";
 import styles from "./styles";
 
 // action & types redux
@@ -121,11 +120,7 @@ const Component = () => {
                     onPress={() => _handleAddData()}
                     disabled={input === ""}
                   >
-                    <Icon
-                      name="add-circle-outline"
-                      size={20}
-                      color={input === "" ? COLORS.green03 : COLORS.green}
-                    />
+                    <Icon name="add" size={20} />
                   </TouchableOpacity>
                 </View>
                 <View style={styles.body}>

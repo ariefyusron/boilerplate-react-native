@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { Text, TouchableHighlight, View } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./styles";
 import { COLORS } from "../../configs";
+import { Icon } from "../../components";
 
 // action & types redux
 import { chooseLanguage } from "../../redux/actions";
