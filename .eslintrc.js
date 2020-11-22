@@ -13,6 +13,7 @@ module.exports = {
     "no-unused-expressions": "off",
     "react/jsx-wrap-multilines": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/camelcase": "off"
+    "@typescript-eslint/camelcase": "off",
+    "react-hooks/rules-of-hooks": "off"
   }
 };
