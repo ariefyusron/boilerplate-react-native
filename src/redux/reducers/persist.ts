@@ -2,7 +2,7 @@ import { CHOOSE_LANGUAGE } from "../actions";
 import { Action, PersistState } from "../types";
 
 const initialState: PersistState = {
-  language: ""
+  language: "",
 };
 
 export default (state = initialState, { type, payload }: Action) => {

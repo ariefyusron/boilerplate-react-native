@@ -3,14 +3,14 @@ import {
   DELETE_DATA,
   GET_SEASON_ERROR,
   GET_SEASON_PENDING,
-  GET_SEASON_SUCCESS
+  GET_SEASON_SUCCESS,
 } from "../actions";
 import { Action, HomeState } from "../types";
 
 const initialState: HomeState = {
   data: [],
   isLoadingGetSeason: false,
-  listSeasons: []
+  listSeasons: [],
 };
 
 export default (state = initialState, { type, payload }: Action) => {
@@ -20,7 +20,7 @@ export default (state = initialState, { type, payload }: Action) => {
     case DELETE_DATA:
       return {
         ...state,
-        data: state.data.filter((data, index) => index !== payload.data)
+        data: state.data.filter((data, index) => index !== payload.data),
       };
 
     // get season

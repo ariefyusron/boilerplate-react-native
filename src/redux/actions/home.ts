@@ -23,7 +23,7 @@ export const getSeasons = () => async (dispatch: Dispatch) => {
     const res = await API.getSeasons();
     dispatch({
       type: GET_SEASON_SUCCESS,
-      payload: { data: res.data.api.seasons }
+      payload: { data: res.data.api.seasons },
     });
   } catch (err) {
     if (err.response) {

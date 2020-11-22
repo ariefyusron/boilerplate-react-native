@@ -5,19 +5,19 @@ import { COLORS } from "../../configs";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   scrollView: {
-    backgroundColor: COLORS.background
+    backgroundColor: COLORS.background,
   },
   wrapImage: {
     width: "100%",
     alignItems: "center",
-    marginTop: 30
+    marginTop: 30,
   },
   image: {
     width: 200,
-    height: 200
+    height: 200,
   },
   engine: {
     position: "absolute",
@@ -26,18 +26,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     paddingHorizontal: 10,
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   wrapAuthor: {
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
   wrapButtonIcon: {
     width: "100%",
-    alignItems: "center"
+    alignItems: "center",
   },
   buttonIcon: {
     padding: 10,
-    alignItems: "center"
+    alignItems: "center",
   },
   wrapContent: {
     width: "100%",
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     flex: 1,
     marginBottom: 30,
-    height: heightPercent(40)
+    height: heightPercent(40),
   },
   content: {
     width: "80%",
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     height: "100%",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
-    elevation: 5
+    elevation: 5,
   },
   header: {
     padding: 10,
@@ -62,27 +62,27 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
   body: {
     paddingVertical: 5,
-    flex: 1
+    flex: 1,
   },
   row: {
     paddingHorizontal: 10,
     paddingVertical: 5,
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   wrapEmptyData: {
     paddingTop: 50,
-    alignItems: "center"
+    alignItems: "center",
   },
   input: {
     padding: 0,
     paddingRight: 5,
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default styles;

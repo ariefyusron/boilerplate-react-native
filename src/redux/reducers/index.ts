@@ -5,5 +5,5 @@ import home from "./home";
 
 export default combineReducers({
   persist,
-  home
+  home,
 });

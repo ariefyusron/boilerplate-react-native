@@ -1,7 +1,7 @@
 import React from "react";
 import {
   TransitionPresets,
-  createStackNavigator
+  createStackNavigator,
 } from "@react-navigation/stack";
 
 import Home from "../screens/Home";

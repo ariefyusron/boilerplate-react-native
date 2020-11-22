@@ -19,7 +19,7 @@ const Component = ({ children, style }: Props) => (
 );
 
 Component.defaultProps = {
-  style: styles.container
+  style: styles.container,
 };
 
 export default memo(Component);

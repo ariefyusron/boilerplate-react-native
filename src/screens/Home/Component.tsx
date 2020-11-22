@@ -8,7 +8,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
@@ -32,7 +32,7 @@ const Component = () => {
   const [input, setInput] = useState("");
   const { homeState } = useSelector(
     (state: Reducers) => ({
-      homeState: state.home
+      homeState: state.home,
     }),
     shallowEqual
   );
@@ -52,7 +52,7 @@ const Component = () => {
     (item: number) => {
       Alert.alert(I18n.t("delete"), I18n.t("youSure"), [
         { text: I18n.t("no") },
-        { text: I18n.t("yes"), onPress: () => _handleDeleteData(item) }
+        { text: I18n.t("yes"), onPress: () => _handleDeleteData(item) },
       ]);
     },
     [_handleDeleteData]
@@ -113,7 +113,7 @@ const Component = () => {
                   <TextInput
                     placeholder={I18n.t("typeHere")}
                     style={styles.input}
-                    onChangeText={text => setInput(text)}
+                    onChangeText={(text) => setInput(text)}
                     value={input}
                   />
                   <TouchableOpacity

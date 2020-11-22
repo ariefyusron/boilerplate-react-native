@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
-    alignItems: "center"
+    alignItems: "center",
   },
   content: {
     width: "80%",
@@ -15,25 +15,25 @@ const styles = StyleSheet.create({
     marginTop: 50,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
-    elevation: 3
+    elevation: 3,
   },
   button: {
     paddingVertical: 20,
     width: "100%",
-    alignItems: "center"
+    alignItems: "center",
   },
   border: {
     borderBottomColor: COLORS.black02,
-    borderBottomWidth: 0.5
+    borderBottomWidth: 0.5,
   },
   text: {
-    fontSize: 16
+    fontSize: 16,
   },
   wrapIcon: {
     position: "absolute",
     right: 10,
-    top: 20
-  }
+    top: 20,
+  },
 });
 
 export default styles;

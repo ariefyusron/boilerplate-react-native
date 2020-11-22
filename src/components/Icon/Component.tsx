@@ -19,7 +19,7 @@ const Component = ({ size, name, color }: Props) => (
 
 Component.defaultProps = {
   size: scale(6),
-  color: COLORS.black
+  color: COLORS.black,
 };
 
 export default memo(Component);

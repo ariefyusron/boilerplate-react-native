@@ -6,7 +6,7 @@ import id from "./language/id.json";
 I18n.fallbacks = true;
 I18n.translations = {
   en,
-  id
+  id,
 };
 
 export const switchLanguage = (language: string) => {

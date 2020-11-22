@@ -3,7 +3,7 @@ import axios from "axios";
 import { ENV } from ".";
 
 const host = axios.create({
-  baseURL: ENV.host
+  baseURL: ENV.host,
 });
 
 // type body
@@ -13,7 +13,7 @@ const host = axios.create({
 */
 
 const api = {
-  getSeasons: () => host.get("seasons")
+  getSeasons: () => host.get("seasons"),
 };
 
 export default api;
