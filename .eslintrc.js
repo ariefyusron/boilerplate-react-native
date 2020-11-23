@@ -14,6 +14,9 @@ module.exports = {
     "react/jsx-wrap-multilines": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/camelcase": "off",
-    "react-hooks/rules-of-hooks": "off"
+    "react-hooks/rules-of-hooks": "off",
+    "prettier/prettier": ["error", {
+      "endOfLine":"auto"
+    }]
   }
 };
