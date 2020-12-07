@@ -2,13 +2,12 @@ import React, { useCallback } from "react";
 import { Text, TouchableHighlight, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
-import styles from "./styles";
 import { COLORS } from "../../configs";
 import { Icon } from "../../components";
-
-// action & types redux
 import { chooseLanguage } from "../../redux/actions";
 import { Reducers } from "../../redux/types";
+
+import styles from "./styles";
 
 const Component = () => {
   const dispatch = useDispatch();

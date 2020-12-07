@@ -16,11 +16,10 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import I18n from "../../I18n";
 import { COLORS, IMAGES } from "../../configs";
 import { Icon, KeyboardAvoidingView } from "../../components";
-import styles from "./styles";
-
-// action & types redux
 import { addData, deleteData, getSeasons } from "../../redux/actions";
 import { Reducers } from "../../redux/types";
+
+import styles from "./styles";
 
 declare const global: { HermesInternal: null | {} };
 

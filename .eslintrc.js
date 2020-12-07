@@ -17,6 +17,16 @@ module.exports = {
     "react-hooks/rules-of-hooks": "off",
     "prettier/prettier": ["error", {
       "endOfLine":"auto"
+    }],
+    "import/order": ["error", {
+      "pathGroups": [
+        {
+          "pattern": "~/**",
+          "group": "external",
+          "position": "after"
+        }
+      ],
+      "newlines-between": "always"
     }]
   }
 };

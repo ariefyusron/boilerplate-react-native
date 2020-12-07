@@ -6,7 +6,6 @@ import {
 
 import Home from "../screens/Home";
 import Setting from "../screens/Setting";
-
 import i18n from "../I18n";
 
 const { Navigator, Screen } = createStackNavigator();
