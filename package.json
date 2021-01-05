@@ -19,7 +19,7 @@
     "@react-native-community/masked-view": "^0.1.6",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-gesture-handler": "^1.5.6",
