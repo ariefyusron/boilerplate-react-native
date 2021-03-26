@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import Stack from "./Stack";
 
-const App = () => {
+const Navigation = () => {
   return (
     <NavigationContainer>
       {Platform.OS === "ios" && <StatusBar barStyle="dark-content" />}
@@ -13,4 +13,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Navigation;
